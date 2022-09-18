@@ -1,0 +1,190 @@
+import 'package:flutter/material.dart';
+import 'package:sample/services/api.dart';
+
+class Login extends StatefulWidget {
+  const Login({Key? key}) : super(key: key);
+
+  @override
+  State<Login> createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
+  final _formKey = GlobalKey<FormState>();
+  final email = TextEditingController();
+  final userpassword = TextEditingController();
+
+  @override
+  void dispose() {
+    super.dispose();
+    email.dispose();
+    userpassword.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Scaffold(
+        body: Form(
+          key: _formKey,
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Center(
+                  child: SizedBox(
+                    height: 300,
+                    width: double.infinity,
+                    child: Image.asset(
+                      "asset/meeket.png",
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: SizedBox(
+                    // height: 40,
+                    width: double.infinity,
+                    child: TextFormField(
+                      style: const TextStyle(fontSize: 12),
+                      controller: email,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please Enter Email Address';
+                        }
+                        return null;
+                      },
+                      decoration: InputDecoration(
+                          hintText: 'Username or phone number',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          )),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: SizedBox(
+                    // height: 40,
+                    width: double.infinity,
+                    child: TextFormField(
+                      obscureText: true,
+                      style: const TextStyle(fontSize: 12.0),
+                      controller: userpassword,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Password';
+                        }
+                        return null;
+                      },
+                      decoration: InputDecoration(
+                          suffixIcon: IconButton(
+                              onPressed: () {},
+                              icon: const Icon(Icons.visibility)),
+                          hintText: "password",
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          )),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: SizedBox(
+                    height: 40,
+                    width: double.infinity,
+                    child: OutlinedButton(
+                      onPressed: () {
+                        setState(() {
+                          username = email.text.trim();
+                          password = userpassword.text.trim();
+                        });
+                        if (_formKey.currentState!.validate()) {
+                          // ScaffoldMessenger.of(context).showSnackBar(
+                          //   const SnackBar(content: Text('Processing Data')),
+                          // );
+                          fetchdata();
+                        }
+                      },
+                      child: const Center(
+                        child: Text(
+                          'Log In',
+                          style: TextStyle(color: Colors.black, fontSize: 18),
+                        ),
+                      ),
+                      style: OutlinedButton.styleFrom(
+                          backgroundColor: Colors.yellow),
+                    ),
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: const [
+                    Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Text(
+                        "Forgot password?",
+                        style: TextStyle(fontSize: 14, color: Colors.blue),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Text(
+                        "Guest LogIn",
+                        style: TextStyle(fontSize: 15, color: Colors.blue),
+                      ),
+                    )
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: const [
+                    SizedBox(
+                      width: 150,
+                      child: Divider(
+                        color: Colors.black,
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: SizedBox(
+                        child: Text("OR"),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 150,
+                      child: Divider(
+                        color: Colors.black,
+                      ),
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: SizedBox(
+                    height: 40,
+                    width: double.infinity,
+                    child: OutlinedButton(
+                      onPressed: () {},
+                      child: const Center(
+                        child: Text(
+                          'Create Account',
+                          style: TextStyle(color: Colors.black, fontSize: 18),
+                        ),
+                      ),
+                      style: OutlinedButton.styleFrom(
+                          backgroundColor: Colors.yellow),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
