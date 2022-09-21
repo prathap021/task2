@@ -2,7 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
-import 'package:sample/screens/list.dart';
+import 'package:sample/screens/description.dart';
+
 import 'package:sample/view/homepage.dart';
 
 void main() {
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Login(),
       getPages: [
-        GetPage(name: '/', page: () => Listing()),
+        GetPage(name: '/', page: () => Desc()),
         // GetPage(name: '/second', page: () => Description()),
       ],
     );

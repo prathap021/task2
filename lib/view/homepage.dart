@@ -104,7 +104,7 @@ class _LoginState extends State<Login> {
                           // ScaffoldMessenger.of(context).showSnackBar(
                           //   const SnackBar(content: Text('Processing Data')),
                           // );
-                          fetchdata();
+                          postdata();
                         }
                       },
                       child: const Center(
@@ -143,7 +143,7 @@ class _LoginState extends State<Login> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: const [
                     SizedBox(
-                      width: 150,
+                      width: 100,
                       child: Divider(
                         color: Colors.black,
                       ),
@@ -155,7 +155,7 @@ class _LoginState extends State<Login> {
                       ),
                     ),
                     SizedBox(
-                      width: 150,
+                      width: 100,
                       child: Divider(
                         color: Colors.black,
                       ),
