@@ -31,13 +31,16 @@ class _LoginState extends State<Login> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Center(
-                  child: SizedBox(
-                    height: 300,
-                    width: double.infinity,
-                    child: Image.asset(
-                      "asset/meeket.png",
-                      fit: BoxFit.cover,
+                Padding(
+                  padding: const EdgeInsets.only(top: 50),
+                  child: Center(
+                    child: SizedBox(
+                      height: 300,
+                      width: double.infinity,
+                      child: Image.asset(
+                        "asset/new.jpeg",
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                 ),
