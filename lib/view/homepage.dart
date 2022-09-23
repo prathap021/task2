@@ -12,6 +12,7 @@ class _LoginState extends State<Login> {
   final _formKey = GlobalKey<FormState>();
   final email = TextEditingController();
   final userpassword = TextEditingController();
+  bool obskey = true;
 
   @override
   void dispose() {
@@ -72,7 +73,7 @@ class _LoginState extends State<Login> {
                     // height: 40,
                     width: double.infinity,
                     child: TextFormField(
-                      obscureText: true,
+                      obscureText: obskey,
                       style: const TextStyle(fontSize: 12.0),
                       controller: userpassword,
                       validator: (value) {
@@ -82,9 +83,15 @@ class _LoginState extends State<Login> {
                         return null;
                       },
                       decoration: InputDecoration(
-                          suffixIcon: IconButton(
-                              onPressed: () {},
-                              icon: const Icon(Icons.visibility)),
+                          suffixIcon: GestureDetector(
+                            onTap: () {
+                              setState(() {});
+                              obskey = !obskey;
+                            },
+                            child: Icon(obskey
+                                ? Icons.visibility
+                                : Icons.visibility_off),
+                          ),
                           hintText: "password",
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10.0),

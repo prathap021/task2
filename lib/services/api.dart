@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:sample/services/descriptionapi.dart';
@@ -36,6 +37,7 @@ Future<void> postdata() async {
     list = jsonDecode(response.body);
     getAll();
   } else {
+    debugPrint('response failed');
     throw Exception('Response failed');
   }
 }
